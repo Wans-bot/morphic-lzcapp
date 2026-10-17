@@ -1,0 +1,67 @@
+package: cloud.lazycat.app.morphic
+version: 1.8.0-1
+name: morphic
+description: AI 答案引擎：先检索全网，再由模型生成带引用的答案
+author: miurla
+license: Apache-2.0
+homepage: https://github.com/miurla/morphic
+min_os_version: 1.6.0
+support_mobile: true
+
+permissions:
+  required:
+    # 需要联网检索网页、调用用户配置的模型接口
+    - net.internet
+
+locales:
+  zh-CN:
+    name: Morphic AI 搜索
+    description: 开源的 AI 答案引擎。先用自带 SearXNG 检索全网，再由大模型整理成带引用来源的答案，支持连续追问与多种搜索模式。
+    usage: |
+      Morphic 是开源的 AI 答案引擎（Perplexity 的开源替代）。它先用搜索引擎检索网页，
+      再把结果交给大模型整理成一段带引用来源的答案，点开引用可以直接看原文。
+
+      安装后会要求填两项（可留空，之后在应用设置里能改）：
+      1. 模型 API Key —— 你自己的 OpenAI 兼容模型服务密钥。
+      2. 模型 API 地址 —— 默认 DeepSeek，也可换 Kimi、智谱、OpenAI 或自建网关。
+
+      搜索用的 SearXNG 已内置在本应用里，不需要任何搜索 API key。
+
+      常用操作：
+      - 顶部输入框直接提问，回车开始检索。
+      - 搜索模式可切换：「快速」只检索，「自适应」会自己决定要不要多轮追问。
+      - 答案里的数字角标就是引用来源，鼠标悬停可预览。
+      - 同一个对话里可以继续追问，模型会带着上文一起回答。
+      - 右上角可切换模型（取决于你配置的服务提供哪些模型）。
+
+      说明：
+      - 数据存在本机（PostgreSQL + Redis + SearXNG 都在容器内运行），重启与升级不丢历史对话。
+      - 应用内不再单独登录，访问控制由微服账号体系负责。
+      - 本应用本身不含模型算力，答案质量与速度取决于你配置的模型服务。
+  en-US:
+    name: Morphic AI Search
+    description: Open-source AI answer engine — searches the web with its bundled SearXNG, then writes a cited answer with your own OpenAI-compatible model.
+    usage: |
+      Morphic is an open-source AI answer engine (an open alternative to Perplexity). It searches
+      the web first, then hands the results to a large language model to produce an answer with
+      inline citations you can click through to the source.
+
+      During install you are asked for two things (both can be left empty and changed later):
+      1. Model API key — the key for your own OpenAI-compatible model endpoint.
+      2. Model API base URL — defaults to DeepSeek; Kimi, Zhipu, OpenAI or a self-hosted
+         gateway all work.
+
+      Searching is handled by a bundled SearXNG instance, so no search API key is required.
+
+      Getting started:
+      - Type a question in the box at the top and press enter.
+      - Switch search mode: Quick only retrieves; Adaptive decides on follow-up searches itself.
+      - The numeric markers in an answer are citations — hover to preview the source.
+      - Continue in the same thread to ask follow-ups with full conversation context.
+      - Pick a different model from the selector in the top right.
+
+      Notes:
+      - All data stays on this box (PostgreSQL, Redis and SearXNG run inside the app) and
+        survives restarts and upgrades.
+      - There is no separate login; access control is handled by the box account system.
+      - This app ships no model compute — answer quality and speed depend on the endpoint you configure.

@@ -1,0 +1,39 @@
+# 部署参数：Morphic 本体不含任何模型，必须接一个 OpenAI 兼容的模型服务。
+# 全部 optional —— 不填也能装完并打开界面，只是搜索/对话时会提示没有可用模型。
+# 默认值按国内最常用的一家填好，用户改两行就能换成 DeepSeek / Moonshot / 智谱 / Together
+# / 自建网关等任意 OpenAI 兼容端点（Morphic 会请求 /v1/chat/completions）。
+params:
+  - id: llm_api_key
+    type: secret
+    name: "模型 API Key"
+    description: >-
+      OpenAI 兼容模型服务的密钥。必填才能使用对话与搜索总结功能；
+      留空则应用能打开但没有可用模型。
+    optional: true
+    default_value: ""
+
+  - id: llm_api_base_url
+    type: string
+    name: "模型 API 地址"
+    description: >-
+      模型服务的 API 地址，可带或不带 /v1。常见取值：
+      https://api.deepseek.com（DeepSeek）、https://api.moonshot.cn/v1（Kimi）、
+      https://open.bigmodel.cn/api/paas/v4（智谱）、https://api.openai.com/v1（OpenAI）。
+    optional: true
+    default_value: "https://api.deepseek.com"
+
+  - id: llm_models
+    type: string
+    name: "模型列表"
+    description: >-
+      逗号分隔的模型名，决定界面里可选的模型。若你的服务提供 /v1/models 接口可留空自动发现；
+      不提供就必须在这里写明，例如：deepseek-chat,deepseek-reasoner
+    optional: true
+    default_value: "deepseek-chat"
+
+  - id: llm_provider_name
+    type: string
+    name: "模型服务显示名"
+    description: "仅用于界面显示，例如 DeepSeek、Kimi、智谱。不影响请求。"
+    optional: true
+    default_value: "DeepSeek"

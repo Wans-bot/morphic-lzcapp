@@ -1,0 +1,100 @@
+# Morphic —— 开源 AI 搜索（答案引擎）
+#
+# 架构：morphic（Next.js，3000）+ postgres 17 + redis + searxng。
+# 搜索能力由自带的 SearXNG 提供，不需要任何搜索 API key；
+# 只有「用模型生成答案」这一步需要用户自己的 OpenAI 兼容端点（见 lzc-deploy-params.yml）。
+application:
+  subdomain: morphic
+  upstreams:
+    - location: /
+      backend: http://morphic.cloud.lazycat.app.morphic.lzcapp:3000
+      # Next.js 自己处理路由，网关不要裁路径
+      disable_trim_location: true
+  health_check:
+    # 应用级检测：直接给 http url，不依赖容器内部有 curl/wget
+    test_url: http://morphic.cloud.lazycat.app.morphic.lzcapp:3000/
+    # 首次启动要先建库并跑迁移，给足时间
+    start_period: 900s
+    timeout: 10s
+
+services:
+  postgres:
+    image: registry.lazycat.cloud/wans/library/postgres:54b52fdd68074990
+    environment:
+      - POSTGRES_USER=morphic
+      # 与 morphic 服务里的 DATABASE_URL 用同一个 stable_secret，保证两端一致
+      - POSTGRES_PASSWORD={{ stable_secret "morphic_pg_password" }}
+      - POSTGRES_DB=morphic
+    binds:
+      - /lzcapp/var/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U morphic -d morphic
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 180s
+
+  redis:
+    image: registry.lazycat.cloud/wans/library/redis:966d984e0a0c0c25
+    # command 必须是字符串（写成数组平台安装会 400，而 project lint 不报）
+    command: 'redis-server --appendonly yes --appendfsync everysec --maxmemory-policy noeviction'
+    binds:
+      - /lzcapp/var/redis:/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - redis-cli ping | grep -q PONG
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  searxng:
+    image: registry.lazycat.cloud/wans/searxng/searxng:94abda6f1da25347
+    environment:
+      # settings.yml 里写的是 8888，这里显式压成 8080，避免依赖镜像默认值
+      - SEARXNG_PORT=8080
+      - SEARXNG_BIND_ADDRESS=0.0.0.0
+      - SEARXNG_BASE_URL=http://searxng:8080/
+      - SEARXNG_SECRET={{ stable_secret "morphic_searxng_secret" }}
+    binds:
+      # 关键：上游这份 settings.yml 声明了 search.formats: [json]。
+      # 不挂它，SearXNG 默认只输出 html，Morphic 取 JSON 会 403。
+      - /lzcapp/pkg/content/searxng/settings.yml:/etc/searxng/settings.yml
+      - /lzcapp/pkg/content/searxng/limiter.toml:/etc/searxng/limiter.toml
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget -q -O- http://127.0.0.1:8080/ | grep -qi searx
+      interval: 15s
+      timeout: 5s
+      retries: 40
+      start_period: 120s
+
+  morphic:
+    image: registry.lazycat.cloud/wans/miurla/morphic:aee06ffc1cbf0d02
+    # 等三个依赖都真正 healthy 再起：entrypoint 会先跑 bun run migrate，
+    # 数据库没起来就会迁移失败退出（上游 compose 里也是这个顺序）
+    depends_on:
+      - postgres
+      - redis
+      - searxng
+    environment:
+      - DATABASE_URL=postgresql://morphic:{{ stable_secret "morphic_pg_password" }}@postgres:5432/morphic
+      - DATABASE_RESTRICTED_URL=postgresql://morphic:{{ stable_secret "morphic_pg_password" }}@postgres:5432/morphic
+      - DATABASE_SSL_DISABLED=true
+      # 访客身份由微服账号体系负责，应用内不再做登录
+      - ENABLE_AUTH=false
+      - ANONYMOUS_USER_ID=lazycat-anonymous
+      - MORPHIC_CLOUD_DEPLOYMENT=false
+      - LOCAL_REDIS_URL=redis://redis:6379
+      # 搜索走自带的 SearXNG，无需搜索 API key
+      - SEARCH_API=searxng
+      - SEARXNG_API_URL=http://searxng:8080
+      # ── 模型：来自部署参数，全部带兜底，避免缺失时被渲染成字面量 <no value> ──
+      - OPENAI_COMPATIBLE_API_KEY={{ if (index .U "llm_api_key") }}{{ index .U "llm_api_key" }}{{ end }}
+      - OPENAI_COMPATIBLE_API_BASE_URL={{ if (index .U "llm_api_base_url") }}{{ index .U "llm_api_base_url" }}{{ else }}https://api.deepseek.com{{ end }}
+      - OPENAI_COMPATIBLE_MODELS={{ if (index .U "llm_models") }}{{ index .U "llm_models" }}{{ end }}
+      - OPENAI_COMPATIBLE_PROVIDER_NAME={{ if (index .U "llm_provider_name") }}{{ index .U "llm_provider_name" }}{{ else }}DeepSeek{{ end }}

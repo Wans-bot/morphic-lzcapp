@@ -1,0 +1,89 @@
+use_default_settings: true
+server:
+  # Is overwritten by ${SEARXNG_PORT} and ${SEARXNG_BIND_ADDRESS}
+  port: 8888
+  bind_address: '0.0.0.0'
+  # public URL of the instance, to ensure correct inbound links. Is overwritten
+  # by ${SEARXNG_URL}.
+  base_url: false # "http://example.com/location"
+  # rate limit the number of request on the instance, block some bots.
+  # Is overwritten by ${SEARXNG_LIMITER}
+  limiter: false
+  # enable features designed only for public instances.
+  # Is overwritten by ${SEARXNG_PUBLIC_INSTANCE}
+  public_instance: false
+
+  # If your instance owns a /etc/searxng/settings.yml file, then set the following
+  # values there.
+
+  secret_key: 'ursecretkey' # Is overwritten by ${SEARXNG_SECRET}
+  # Proxy image results through SearXNG. Is overwritten by ${SEARXNG_IMAGE_PROXY}
+  image_proxy: false
+  # 1.0 and 1.1 are supported
+  http_protocol_version: '1.0'
+  # POST queries are more secure as they don't show up in history but may cause
+  # problems when using Firefox containers
+  method: 'POST'
+  default_http_headers:
+    X-Content-Type-Options: nosniff
+    X-Download-Options: noopen
+    X-Robots-Tag: noindex, nofollow
+    Referrer-Policy: no-referrer
+
+search:
+  formats:
+    - json
+
+# ── 引擎取舍（本应用的关键配置）──────────────────────────────────────────────
+# SearXNG 默认引擎组以 Google / DuckDuckGo / Brave / Wikipedia 为主。
+# 在国内网络实测：google、duckduckgo、brave、startpage、wikipedia 的 TLS 握手直接超时，
+# 只有 bing 与中文站可达。默认配置下每次查询都要等这几个引擎超时，
+# 结果是「unresponsive_engines 一堆、results 为空」，Morphic 因此拿不到任何引用来源。
+# 这里显式关掉不可达的，只留实测可用的：Bing + 百度 + 搜狗 + 360。
+engines:
+  - name: google
+    disabled: true
+  - name: google images
+    disabled: true
+  - name: google news
+    disabled: true
+  - name: google scholar
+    disabled: true
+  - name: duckduckgo
+    disabled: true
+  - name: duckduckgo images
+    disabled: true
+  - name: duckduckgo news
+    disabled: true
+  - name: brave
+    disabled: true
+  - name: brave images
+    disabled: true
+  - name: brave news
+    disabled: true
+  - name: startpage
+    disabled: true
+  - name: startpage images
+    disabled: true
+  - name: startpage news
+    disabled: true
+  - name: wikipedia
+    disabled: true
+  - name: wikidata
+    disabled: true
+  - name: wikimini
+    disabled: true
+  - name: qwant
+    disabled: true
+  - name: mojeek
+    disabled: true
+  - name: bing
+    disabled: false
+  - name: baidu
+    disabled: false
+  - name: sogou
+    disabled: false
+  - name: 360search
+    disabled: false
+  - name: quark
+    disabled: false

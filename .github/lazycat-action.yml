@@ -1,0 +1,60 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  # 必须是固定文件名且以 .lpk 结尾
+  output: out/morphic.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  # 上游镜像是 ghcr.io/miurla/morphic，标签只有 latest 与 40 位提交 SHA，没有 semver，
+  # 无法自动映射成版本号，所以版本由本仓库 tag 决定（推 v1.8.0-2 就产出 1.8.0-2）。
+  version_source:
+    type: git
+
+build:
+  # 纯打包工程：没有 buildscript，模板与静态文件都已就位
+  run_buildscript: false
+
+# 镜像已用 lzc-cli appstore copy-image 手工中转并固定在 lzc-manifest.yml 里。
+# 这里留空：不交给 Action 改 Manifest 的 image 字段，避免它按 semver 规则找不到标签。
+images: []
+
+stores:
+  official:
+    enabled: true
+    continue_if_newer_version: true
+    skip_if_version_exists: true
+    create_if_missing: true
+    application:
+      language: zh
+      name: Morphic AI 搜索
+      brief: 开源的 AI 答案引擎：先用自带 SearXNG 检索全网，再由大模型生成带引用来源的答案。
+      description: >-
+        Morphic 是开源的 AI 答案引擎（Perplexity 的开源替代）。它先用搜索引擎检索网页，
+        再把结果交给大模型整理成带引用来源的答案，点开引用就能看原文，并支持在同一对话里连续追问。
+        应用内置 SearXNG 负责检索，不需要任何搜索 API key；生成答案所用的大模型需要用户填自己的
+        OpenAI 兼容端点（默认 DeepSeek，也可换 Kimi、智谱、OpenAI 或自建网关）。
+        数据全部存放在本机 PostgreSQL 与 Redis 中，重启与升级不丢历史对话；
+        应用内不需要单独登录，访问控制由微服账号体系负责。
+      keywords: AI搜索,答案引擎,大模型,Perplexity,SearXNG,RAG
+      source: https://github.com/miurla/morphic
+      source_author: miurla
+      support_pc: true
+      support_mobile: true
+      # 校验规则：support_pc 需 ≥2 张 PC 图，support_mobile 需 ≥3 张移动图
+      screenshot_pc_files:
+        - docs/screenshots/pc/pc-01-home.png
+        - docs/screenshots/pc/pc-02-answer.png
+        - docs/screenshots/pc/pc-03-citations.png
+      screenshot_mobile_files:
+        - docs/screenshots/mobile/mob-01-home.png
+        - docs/screenshots/mobile/mob-02-answer.png
+        - docs/screenshots/mobile/mob-03-settings.png
+    changelog_locales: [zh, en]
+  private:
+    enabled: false

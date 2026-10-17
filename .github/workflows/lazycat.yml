@@ -1,0 +1,40 @@
+name: LazyCat LPK
+
+# tag 驱动：推 v* tag 就把 package.yml 版本改成该 tag、打包 LPK、发 Release、提交官方商店。
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: "auto / check / build / publish-official"
+        type: choice
+        options:
+          - auto
+          - check
+          - build
+          - publish-official
+        default: auto
+      dry-run:
+        description: "只演练，不写文件、不发布"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  lazycat:
+    # 固定提交，不用浮动 v1 标签，保证构建行为可复现
+    uses: ca-x/lazycat-github-action/.github/workflows/lazycat.yml@3dabca95f6eb0c3a6c4fc889631b13a055852912
+    with:
+      operation: ${{ inputs.operation || 'auto' }}
+      config: .github/lazycat-action.yml
+      dry-run: ${{ inputs.dry-run || false }}
+      # 本工程不跑 buildscript、不声明 toolchains，因此这里不传 toolchains / node-version。
+      # 传了反而会报 CONFIG_INVALID: workflow toolchains do not match Action configuration
+      versioned-release-asset: true
+    secrets:
+      LAZYCAT_TOKEN: ${{ secrets.LAZYCAT_TOKEN }}
