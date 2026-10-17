@@ -11,7 +11,7 @@
 | morphic | `registry.lazycat.cloud/wans/miurla/morphic:aee06ffc1cbf0d02` | Next.js 前端与 API，端口 3000 |
 | postgres | `registry.lazycat.cloud/wans/library/postgres:54b52fdd68074990` | 会话与消息持久化 |
 | redis | `registry.lazycat.cloud/wans/library/redis:966d984e0a0c0c25` | 缓存与队列 |
-| searxng | `registry.lazycat.cloud/wans/searxng/searxng:94ab6f1da25347` | 元搜索引擎，负责检索 |
+| searxng | `registry.lazycat.cloud/wans/searxng/searxng:94abda6f1da25347` | 元搜索引擎，负责检索 |
 
 ## 两个必须知道的配置点
 
