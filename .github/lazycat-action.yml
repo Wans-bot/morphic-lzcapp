@@ -54,7 +54,7 @@ stores:
       screenshot_mobile_files:
         - docs/screenshots/mobile/mob-01-home.png
         - docs/screenshots/mobile/mob-02-answer.png
-        - docs/screenshots/mobile/mob-03-settings.png
+        - docs/screenshots/mobile/mob-03-citations.png
     changelog_locales: [zh, en]
   private:
     enabled: false
