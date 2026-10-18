@@ -35,5 +35,15 @@ stores:
     changelog_locales:
       - zh-CN
       - en-US
+    application:
+      language: zh
+      brief: "AI 答案引擎"
+      description: "开源的 AI 答案引擎。先用自带 SearXNG 检索全网，再由大模型整理成带引用来源的答案，支持连续追问与多种搜索模式。"
+      keywords: "AI搜索, 答案引擎, 联网检索, 引用来源, SearXNG"
+      support_pc: true
+      screenshot_pc_files:
+        - ".github/screenshots/pc-1.png"
+        - ".github/screenshots/pc-2.png"
+        - ".github/screenshots/pc-3.png"
   private:
     enabled: false
