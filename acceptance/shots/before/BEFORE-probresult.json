@@ -1,0 +1,483 @@
+{
+ "base": "https://morphic.wans.heiyu.space",
+ "startedAt": "2026-10-19T08:55:53.925Z",
+ "pages": [
+  {
+   "step": "home",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 219,
+   "textHead": "Morphic Toggle Sidebar New History History Actions No search history Feedback Open menu Toggle Sidebar What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "History Actions",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "Toggle Sidebar",
+     "title": "Toggle Sidebar",
+     "visible": true
+    },
+    {
+     "text": "Feedback",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Add",
+     "aria": "Add",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Quick mode",
+     "aria": "Quick mode",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Adaptive mode",
+     "aria": "Adaptive mode",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "No enabled model available",
+     "aria": "",
+     "title": "No enabled models are available",
+     "visible": true
+    },
+    {
+     "text": "No enabled model is available",
+     "aria": "",
+     "title": "No enabled model is available",
+     "visible": true
+    },
+    {
+     "text": "Decide",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Troubleshoot",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "How-to",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Understand",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Create",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  },
+  {
+   "step": "/auth/login",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/auth/login",
+   "url": "https://morphic.wans.heiyu.space/auth/login",
+   "title": "Morphic",
+   "textLen": 168,
+   "textHead": "Morphic Toggle Sidebar New History History Actions No search history Open menu Toggle Sidebar Welcome back Sign in to your account Email Password Sign In ← Back to Home",
+   "loginWordHits": [
+    "sign in",
+    "password"
+   ],
+   "pwInputs": [
+    {
+     "type": "password",
+     "name": "",
+     "id": "password",
+     "placeholder": "********",
+     "visible": true
+    },
+    {
+     "type": "password",
+     "name": "",
+     "id": "password",
+     "placeholder": "********",
+     "visible": false
+    }
+   ],
+   "emailInputs": [
+    {
+     "type": "email",
+     "name": "",
+     "id": "email",
+     "visible": true
+    },
+    {
+     "type": "email",
+     "name": "",
+     "id": "email",
+     "visible": false
+    }
+   ],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "History Actions",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "Toggle Sidebar",
+     "title": "Toggle Sidebar",
+     "visible": true
+    },
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Sign In",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  },
+  {
+   "step": "/auth/sign-up",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/auth/login",
+   "url": "https://morphic.wans.heiyu.space/auth/login",
+   "title": "Morphic",
+   "textLen": 168,
+   "textHead": "Morphic Toggle Sidebar New History History Actions No search history Open menu Toggle Sidebar Welcome back Sign in to your account Email Password Sign In ← Back to Home",
+   "loginWordHits": [
+    "sign in",
+    "password"
+   ],
+   "pwInputs": [
+    {
+     "type": "password",
+     "name": "",
+     "id": "password",
+     "placeholder": "********",
+     "visible": true
+    },
+    {
+     "type": "password",
+     "name": "",
+     "id": "password",
+     "placeholder": "********",
+     "visible": false
+    }
+   ],
+   "emailInputs": [
+    {
+     "type": "email",
+     "name": "",
+     "id": "email",
+     "visible": true
+    },
+    {
+     "type": "email",
+     "name": "",
+     "id": "email",
+     "visible": false
+    }
+   ],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "History Actions",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "Toggle Sidebar",
+     "title": "Toggle Sidebar",
+     "visible": true
+    },
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Sign In",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  },
+  {
+   "step": "/auth/error",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/auth/error",
+   "url": "https://morphic.wans.heiyu.space/auth/error",
+   "title": "Morphic",
+   "textLen": 153,
+   "textHead": "Morphic Toggle Sidebar New History History Actions No search history Open menu Toggle Sidebar Sorry, something went wrong. An unspecified error occurred.",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "History Actions",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "Toggle Sidebar",
+     "title": "Toggle Sidebar",
+     "visible": true
+    },
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  },
+  {
+   "step": "/search",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 219,
+   "textHead": "Morphic Toggle Sidebar New History History Actions No search history Feedback Open menu Toggle Sidebar What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "History Actions",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "Toggle Sidebar",
+     "title": "Toggle Sidebar",
+     "visible": true
+    },
+    {
+     "text": "Feedback",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Toggle Sidebar",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Add",
+     "aria": "Add",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Quick mode",
+     "aria": "Quick mode",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Adaptive mode",
+     "aria": "Adaptive mode",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "No enabled model available",
+     "aria": "",
+     "title": "No enabled models are available",
+     "visible": true
+    },
+    {
+     "text": "No enabled model is available",
+     "aria": "",
+     "title": "No enabled model is available",
+     "visible": true
+    },
+    {
+     "text": "Decide",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Troubleshoot",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "How-to",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Understand",
+     "aria": "",
+     "title": "",
+     "visible": true
+    },
+    {
+     "text": "Create",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  },
+  {
+   "step": "/library",
+   "status": 404,
+   "finalUrl": "https://morphic.wans.heiyu.space/library",
+   "url": "https://morphic.wans.heiyu.space/library",
+   "title": "Morphic",
+   "textLen": 43,
+   "textHead": "Open menu 404 This page could not be found.",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "buttons": [
+    {
+     "text": "Open menu",
+     "aria": "",
+     "title": "",
+     "visible": true
+    }
+   ]
+  }
+ ],
+ "errors": [],
+ "badResponses": [],
+ "external": [],
+ "siteLinks": [
+  {
+   "p": "/",
+   "label": "New"
+  }
+ ],
+ "consoleError": [
+  "https://morphic.wans.heiyu.space/library :: Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ],
+ "pageError": [],
+ "reqFail": [
+  "https://morphic.wans.heiyu.space/?_rsc=n5hqsW7r31npIJSZ :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=zq8L_ECosMvEVZUv :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=n5hqsW7r31npIJSZ :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=zq8L_ECosMvEVZUv :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=bGK35a6Leol15egE :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=tXyZJ52UQVBCVsD3 :: net::ERR_ABORTED"
+ ],
+ "http4xx5xx": [
+  "404 https://morphic.wans.heiyu.space/library"
+ ],
+ "finishedAt": "2026-10-19T08:56:18.072Z"
+}

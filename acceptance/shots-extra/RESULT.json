@@ -1,0 +1,181 @@
+{
+ "package": "cloud.lazycat.app.morphic",
+ "lpk": "/home/wans/rework/morphic/dist/morphic-1.8.0-3.lpk",
+ "lpkSha256": "c27a8efd3975611335bcdd2e9d4f04e50d6e259b8ed535f85de92ca2a246a635",
+ "domain": "morphic.wans.heiyu.space",
+ "ssh": "lzcbox",
+ "harness": "mh2",
+ "startedAt": "2026-10-19T09:58:59.406Z",
+ "steps": [
+  {
+   "name": "S1 前置检查",
+   "ok": true,
+   "at": "2026-10-19T09:58:59.597Z",
+   "note": "lzcos v1.6.2 docker 27.5.1 sshCode 0"
+  },
+  {
+   "name": "S1 脚手架名合法",
+   "ok": true,
+   "at": "2026-10-19T09:58:59.599Z",
+   "note": "mh2"
+  },
+  {
+   "name": "S2 拆除同名脚手架",
+   "ok": true,
+   "at": "2026-10-19T09:58:59.804Z",
+   "note": "HARNESS_DOWN (mh2)"
+  },
+  {
+   "name": "S2/S3/S4 跳过安装",
+   "ok": true,
+   "at": "2026-10-19T09:59:00.157Z",
+   "note": "按 --skip-install 直接验收现有实例"
+  },
+  {
+   "name": "S5 容器就绪",
+   "ok": true,
+   "at": "2026-10-19T09:59:00.330Z",
+   "note": "5 个容器 Up，等待 0s"
+  },
+  {
+   "name": "S6 起 TLS 前置与 Chrome",
+   "ok": true,
+   "at": "2026-10-19T09:59:13.310Z",
+   "note": "CHROME_IP=172.28.3.195"
+  },
+  {
+   "name": "S6 入口链路返回应用页面",
+   "ok": true,
+   "at": "2026-10-19T09:59:13.558Z",
+   "note": "63882 字节，注入 0 个"
+  },
+  {
+   "name": "S6 CDP 隧道",
+   "ok": true,
+   "at": "2026-10-19T09:59:14.587Z",
+   "note": "127.0.0.1:9337 -> 172.28.3.195:9441"
+  },
+  {
+   "name": "S7 全页回归 0 报错",
+   "ok": true,
+   "at": "2026-10-19T09:59:26.043Z",
+   "note": "2 页，问题页 0"
+  },
+  {
+   "name": "S7 出图",
+   "ok": false,
+   "at": "2026-10-19T09:59:42.620Z",
+   "note": "PC 2 张，移动 2 张"
+  }
+ ],
+ "verdict": "failed",
+ "box": {
+  "user": "root",
+  "arch": "x86_64",
+  "lzcos": "v1.6.2",
+  "docker": "27.5.1",
+  "sshCode": 0
+ },
+ "containers": [
+  {
+   "name": "cloudlazycatappmorphic-morphic-1",
+   "status": "Up 49 minutes",
+   "running": true,
+   "healthy": false,
+   "unhealthy": false
+  },
+  {
+   "name": "cloudlazycatappmorphic-postgres-1",
+   "status": "Up 49 minutes (healthy)",
+   "running": true,
+   "healthy": true,
+   "unhealthy": false
+  },
+  {
+   "name": "cloudlazycatappmorphic-searxng-1",
+   "status": "Up 49 minutes (healthy)",
+   "running": true,
+   "healthy": true,
+   "unhealthy": false
+  },
+  {
+   "name": "cloudlazycatappmorphic-redis-1",
+   "status": "Up 49 minutes (healthy)",
+   "running": true,
+   "healthy": true,
+   "unhealthy": false
+  },
+  {
+   "name": "cloudlazycatappmorphic-app-1",
+   "status": "Up 49 minutes (healthy)",
+   "running": true,
+   "healthy": true,
+   "unhealthy": false
+  }
+ ],
+ "harnessChromeIp": "172.28.3.195",
+ "entry": {
+  "bytes": 63882,
+  "injects": []
+ },
+ "regressRaw": "入口可达: https://morphic.wans.heiyu.space/ | 标题: Morphic\n   ok Morphic                /                                                  st=200 报错=0 横幅=0 外网依赖=24 预取中断=3\n   ok 懒猫微服是什么？ Today, 05:13  /search/accfxchat00000000000000001                 st=200 报错=0 横幅=0 外网依赖=24 预取中断=2\n\n结果: 2 页，其中 0 页有问题 -> /home/wans/rework/morphic/acceptance/shots-extra/regress/regress-1792403966034.json\n外网依赖（离线/评审环境可能打不开，按需在处理层去掉）:\n  https://morphic.wans.heiyu.space/\n  https://morphic.wans.heiyu.space/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\n  https://morphic.wans.heiyu.space/_next/static/chunks/0dj__faz90r4p.css\n  https://morphic.wans.heiyu.space/_next/static/chunks/0btkwh0cdeo8c.css\n  https://morphic.wans.heiyu.space/_next/static/chunks/0-hrh_uw98wb_.js\n  https://morphic.wans.heiyu.space/_next/static/chunks/16179bmihcxnz.js\n  https://morphic.wans.heiyu.space/_next/static/chunks/0sdmrx_68ms6t.js\n  https://morphic.wans.heiyu.space/_next/static/chunks/0aqpm5mabssqz.js\n  https://morphic.wans.heiyu.space/_next/static/chunks/128aahewwf1we.js\n  https://morphic.wans.heiyu.space/_next/static/chunks/0th97k6..1was.js\n",
+ "regress": {
+  "pages": 2,
+  "bad": 0,
+  "external": [
+   "https://morphic.wans.heiyu.space/",
+   "https://morphic.wans.heiyu.space/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0dj__faz90r4p.css",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0btkwh0cdeo8c.css",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0-hrh_uw98wb_.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/16179bmihcxnz.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0sdmrx_68ms6t.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0aqpm5mabssqz.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/128aahewwf1we.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0th97k6..1was.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/turbopack-0~-c6rj9hv0_1.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0gwg_w3d2qe6j.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/09ip2nwiko_ed.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/04ydj-9xvx8uv.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0d.heku6_su94.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0-~kpotx4sjcs.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0i.l9589uvx0j.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0dda3yi3lpyd9.js",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/13n~bvk5e494-.js",
+   "https://morphic.wans.heiyu.space/api/chats?offset=0&limit=20",
+   "https://morphic.wans.heiyu.space/?_rsc=tXyZJ52UQVBCVsD3",
+   "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=5CB68i4pnAekjehf",
+   "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=aCwclxwBhbuw6F7d",
+   "https://morphic.wans.heiyu.space/_next/static/chunks/0gby15fqvbm~b.js",
+   "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001",
+   "https://morphic.wans.heiyu.space/?_rsc=zj-uSgHhA8BZoNaP",
+   "https://morphic.wans.heiyu.space/?_rsc=awQQDJxKVwuQBW1d",
+   "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=awQQDJxKVwuQBW1d"
+  ]
+ },
+ "shots": [
+  {
+   "file": "mob01__.png",
+   "size": "1170x2532",
+   "warn": ""
+  },
+  {
+   "file": "mob02__settings.png",
+   "size": "1170x2532",
+   "warn": ""
+  },
+  {
+   "file": "pc01__.png",
+   "size": "1920x1080",
+   "warn": ""
+  },
+  {
+   "file": "pc02__settings.png",
+   "size": "1920x1080",
+   "warn": ""
+  }
+ ],
+ "shotsRaw": "入口可达: https://morphic.wans.heiyu.space/ | 标题: Morphic\n  PC 图 /home/wans/rework/morphic/acceptance/shots-extra/shots/pc01__.png (Morphic)\n  PC 图 /home/wans/rework/morphic/acceptance/shots-extra/shots/pc02__settings.png (Morphic)\n  移动端自检: {\"innerWidth\":390,\"docWidth\":390,\"overflowDoc\":0,\"wide\":0,\"wideList\":[],\"viewportMeta\":true} -> 通过，可出移动图\n  移动图 /home/wans/rework/morphic/acceptance/shots-extra/shots/mob01__.png\n  移动图 /home/wans/rework/morphic/acceptance/shots-extra/shots/mob02__settings.png\n\n出图清单（提审要求：PC ≥3 张且不同真实页面；每边 1080-7680；移动端 ≥3 张或声明不支持）\n  mob01__.png  1170x2532\n  mob02__settings.png  1170x2532\n  pc01__.png  1920x1080\n  pc02__settings.png  1920x1080\n",
+ "failedStep": "S7 出图",
+ "finishedAt": "2026-10-19T09:59:42.620Z"
+}

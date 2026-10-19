@@ -1,0 +1,160 @@
+{
+ "base": "https://morphic.wans.heiyu.space",
+ "cdp": "http://127.0.0.1:9334",
+ "startedAt": "2026-10-19T09:19:32.303Z",
+ "pages": [
+  {
+   "step": "/",
+   "tag": "home",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 224,
+   "textHead": "Morphic Toggle Sidebar New History History Actions 懒猫微服是什么？ Today, 05:13 PM Chat Actions Feedback Open menu What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/",
+   "tag": "home-with-history",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 224,
+   "textHead": "Morphic Toggle Sidebar New History History Actions 懒猫微服是什么？ Today, 05:13 PM Chat Actions Feedback Open menu What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/search/accfxchat00000000000000001?ts=1792401580554",
+   "tag": "citation-detail",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?ts=1792401580554",
+   "url": "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?ts=1792401580554",
+   "title": "懒猫微服是什么？",
+   "textLen": 336,
+   "textHead": "Morphic Toggle Sidebar New History History Actions 懒猫微服是什么？ Today, 05:13 PM Chat Actions Open menu 懒猫微服是什么？ 懒猫微服（Lazycat Microserver）是一台放在自己家里的私有云服务器：应用都跑在这台机器的容器里，数据留在本地，不经过第三方云[1]。它对外的每个应用都是一个 https 域名，由盒子统一做访问控制，应用本身保持原样即可[2]。 Retry Morphic can make mistakes. Please double-check responses. No enabled model available Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/auth/login",
+   "tag": "auth-login",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 224,
+   "textHead": "Morphic Toggle Sidebar New History History Actions 懒猫微服是什么？ Today, 05:13 PM Chat Actions Feedback Open menu What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/auth/sign-up",
+   "tag": "auth-signup",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 224,
+   "textHead": "Morphic Toggle Sidebar New History History Actions 懒猫微服是什么？ Today, 05:13 PM Chat Actions Feedback Open menu What would you like to know? No enabled model available Decide Troubleshoot How-to Understand Create Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/",
+   "tag": "mobile-home",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/",
+   "url": "https://morphic.wans.heiyu.space/",
+   "title": "Morphic",
+   "textLen": 111,
+   "textHead": "Feedback Open menu Toggle Sidebar What would you like to know? Quick No enabled model available Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  },
+  {
+   "step": "/search/accfxchat00000000000000001?ts=1792401597621",
+   "tag": "mobile-citation",
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?ts=1792401597621",
+   "url": "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?ts=1792401597621",
+   "title": "懒猫微服是什么？",
+   "textLen": 268,
+   "textHead": "Open menu Toggle Sidebar 懒猫微服是什么？ 懒猫微服（Lazycat Microserver）是一台放在自己家里的私有云服务器：应用都跑在这台机器的容器里，数据留在本地，不经过第三方云[1]。它对外的每个应用都是一个 https 域名，由盒子统一做访问控制，应用本身保持原样即可[2]。 Retry Morphic can make mistakes. Please double-check responses. Quick No enabled model available Drop files here",
+   "loginWordHits": [],
+   "pwInputs": [],
+   "emailInputs": [],
+   "authLinks": [],
+   "injectScripts": []
+  }
+ ],
+ "consoleError": [],
+ "pageError": [],
+ "requestFailed": [
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=aCwclxwBhbuw6F7d :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=5CB68i4pnAekjehf :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=aCwclxwBhbuw6F7d :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=zj-uSgHhA8BZoNaP :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/?_rsc=awQQDJxKVwuQBW1d :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=awQQDJxKVwuQBW1d :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=5CB68i4pnAekjehf :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=aCwclxwBhbuw6F7d :: net::ERR_ABORTED",
+  "https://morphic.wans.heiyu.space/search/accfxchat00000000000000001?_rsc=5CB68i4pnAekjehf :: net::ERR_ABORTED"
+ ],
+ "http4xx5xx": [],
+ "external": [],
+ "sidebarExpanded": {
+  "hasWrapper": true,
+  "sidebarVisible": true,
+  "sidebarLeft": 0
+ },
+ "historyLinks": [
+  "/search/accfxchat00000000000000001"
+ ],
+ "mobileOverflow": {
+  "innerWidth": 430,
+  "docWidth": 430,
+  "overflowDoc": 0,
+  "wideCount": 0,
+  "wide": []
+ },
+ "finishedAt": "2026-10-19T09:20:02.955Z",
+ "summary": {
+  "totalPages": 7,
+  "pagesWithVisiblePasswordInput": [],
+  "pagesWithAuthLinks": [],
+  "authLogin": {
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/"
+  },
+  "authSignup": {
+   "status": 200,
+   "finalUrl": "https://morphic.wans.heiyu.space/"
+  },
+  "pageerror": 0,
+  "consoleError": 0,
+  "requestFailed": 9,
+  "http4xx5xx": 0
+ }
+}

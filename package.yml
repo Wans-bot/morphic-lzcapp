@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.morphic
-version: 1.8.0-2
+version: 1.8.0-3
 name: morphic
 description: AI 答案引擎：先检索全网，再由模型生成带引用的答案
 author: miurla
@@ -35,8 +35,10 @@ locales:
       - 右上角可切换模型（取决于你配置的服务提供哪些模型）。
 
       说明：
+      - 本应用**没有应用内账号，也没有应用内密码**：不需要注册、不需要登录，
+        打开就是搜索界面，可以直接提问。应用内不存在登录页、注册页或任何密码输入框。
+      - 访问控制由懒猫账号（微服账号体系）负责，能打开本应用就说明已经通过微服鉴权。
       - 数据存在本机（PostgreSQL + Redis + SearXNG 都在容器内运行），重启与升级不丢历史对话。
-      - 应用内不再单独登录，访问控制由微服账号体系负责。
       - 本应用本身不含模型算力，答案质量与速度取决于你配置的模型服务。
   en-US:
     name: Morphic AI Search
@@ -61,7 +63,11 @@ locales:
       - Pick a different model from the selector in the top right.
 
       Notes:
+      - This app has **no in-app account and no in-app password**. There is nothing to
+        sign up for and nothing to sign in to — opening the app lands you straight on the
+        search screen. The app contains no login page, no sign-up page and no password field.
+      - Access control is handled by the Lazycat (box) account system: if you can open this
+        app, you have already been authenticated by the box.
       - All data stays on this box (PostgreSQL, Redis and SearXNG run inside the app) and
         survives restarts and upgrades.
-      - There is no separate login; access control is handled by the box account system.
       - This app ships no model compute — answer quality and speed depend on the endpoint you configure.

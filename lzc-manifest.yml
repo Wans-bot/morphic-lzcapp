@@ -17,6 +17,53 @@ application:
     start_period: 900s
     timeout: 10s
 
+  # ── 封掉上游自带的 /auth/* 路由（官方审核 #20762 驳回根因） ──
+  # 上游 Morphic 是一个带账号体系的应用，Next.js 构建时把 /auth/login、/auth/sign-up、
+  # /auth/forgot-password、/auth/update-password、/auth/admin、/auth/confirm 等页面
+  # **无条件注册**进了路由表；ENABLE_AUTH=false 只把「界面里的登录入口」摘掉
+  # （capabilities 全 false：没有 Sign Up / Forgot password / Google 登录 / 分享），
+  # 页面组件本身没有 `if (!isAuthEnabled()) redirect("/")` 这类兜底。
+  # 于是直接访问 /auth/login 仍会渲染出「Welcome back / Sign in to your account /
+  # Email / Password / Sign In」的邮箱+密码表单 —— 评审就是这样拿到一张要密码的截图，
+  # 给出「没有密码自动注入，也没有提供密码，无法测试」。
+  # 微服应用的正确形态是「访问控制交给微服账号网关，应用内完全没有登录」，
+  # 所以在网关层把整段 /auth/* 路由封死，落到应用首页。
+  injects:
+    # 1) request 阶段：/auth 与 /auth/* 一律回首页。
+    #    auth_required 必须显式 false —— 默认 true 时「没有合法 SAFE_UID 的请求会被静默跳过」，
+    #    而评审/匿名访问正是没有 SAFE_UID 的那种请求，注入会失效、登录页照样出来。
+    - id: morphic-block-auth-pages
+      'on': request
+      auth_required: false
+      when:
+        - /auth
+        - /auth/*
+      do: |
+        // 一律 302 回首页，不区分 RSC。
+        // 试过对 RSC 预取（RSC: 1 头）回 `ctx.response.send(204, "")`，实测这条路径会
+        // **断开连接不回任何字节**（curl 报 000，TLS 前置 nginx 记 502 Bad Gateway），
+        // 比回 302 更糟。而页面里已经不存在任何指向 /auth/* 的链接（capabilities.signUp=false，
+        // 没有注册/忘记密码/分享入口），App Router 不会去预取这些路由，所以统一 302 最稳。
+        // 加 no-store：别让浏览器把这条重定向或后来的页面当缓存复用，避免评审拿到旧副本。
+        ctx.response.send(302, "", {
+          location: "/",
+          headers: { "Cache-Control": "no-store" },
+        });
+    # 2) browser 阶段兜底：万一网关重定向被绕过（浏览器复用了旧的 /auth/login 缓存副本、
+    #    或将来上游改成客户端 router.push 跳登录页），页面自己在 /auth/* 上立刻跳回首页。
+    #    只匹配 /auth/*，不影响首页、/search/*、/api/* 与静态资源。
+    - id: morphic-auth-page-guard
+      'on': browser
+      auth_required: false
+      when:
+        - /auth
+        - /auth/*
+      do: |
+        (function () {
+          var p = location.pathname;
+          if (p === "/auth" || p.indexOf("/auth/") === 0) location.replace("/");
+        })();
+
 services:
   postgres:
     image: registry.lazycat.cloud/wans/library/postgres:54b52fdd68074990
