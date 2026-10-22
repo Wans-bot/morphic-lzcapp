@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.morphic
-version: 1.8.2
+version: 1.8.3
 name: morphic
 description: AI 答案引擎：先检索全网，再由模型生成带引用的答案
 author: miurla
