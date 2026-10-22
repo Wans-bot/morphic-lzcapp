@@ -18,6 +18,10 @@ on:
         description: "只演练，不写文件、不发布"
         type: boolean
         default: false
+      force:
+        description: "强制重发：跳过待审闸门，会取消上一张待审审核单"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -33,6 +37,7 @@ jobs:
       - id: check
         env:
           LZC_USER_TOKEN: ${{ secrets.LAZYCAT_TOKEN }}
+          REVIEW_GATE_FORCE: ${{ inputs.force || 'false' }}
         run: node ci/review-gate.mjs cloud.lazycat.app.morphic
   lazycat:
     needs: gate
