@@ -52,6 +52,12 @@ if (BLACKLIST.has(shortId)) {
 
 // tag 推送是显式发布意图，绕过闸门
 if (process.env.GITHUB_EVENT_NAME === 'push') emit(false, 'tag 推送，按显式意图发布');
+
+// 显式强制（workflow_dispatch 传 force=true）：用于只改商店资料（截图/文案）等
+// 「镜像没变但必须重新提审」的场景；action 会取消上一张待审审核单并提新的。
+if (process.env.REVIEW_GATE_FORCE === 'true') {
+  emit(false, 'force=true，按显式意图覆盖待审闸门（上一张待审单会被取消）');
+}
 if (!pkg) emit(false, '未提供 package，放行');
 if (!TOKEN) emit(false, '缺少 LZC_USER_TOKEN，放行（无法判断待审状态）');
 
