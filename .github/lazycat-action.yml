@@ -49,5 +49,9 @@ stores:
         - ".github/screenshots/pc-1.png"
         - ".github/screenshots/pc-2.png"
         - ".github/screenshots/pc-3.png"
+      screenshot_mobile_files:
+        - ".github/screenshots/mobile-1.png"
+        - ".github/screenshots/mobile-2.png"
+        - ".github/screenshots/mobile-3.png"
   private:
     enabled: false
