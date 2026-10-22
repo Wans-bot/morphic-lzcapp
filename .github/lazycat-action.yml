@@ -13,6 +13,10 @@ update:
   version_source:
     type: image
     image: app
+    # 上游 ghcr.io/miurla/morphic 只发 40 位 commit sha，没有语义化版本，
+    # 所以按 digest 变化递增 patch 位（文档：Mutable tags and automatic patch bumps）。
+    bump: patch
+
 build:
   run_buildscript: false
 
@@ -22,8 +26,8 @@ images:
     service: morphic
     source: ghcr.io/miurla/morphic
     channel: custom
-    tag_regex: '^v?\d+\.\d+\.\d+$'
-    sort: semver
+    tag_regex: '^[0-9a-f]{40}$'
+    sort: created
     delivery:
       mode: lazycat
 
