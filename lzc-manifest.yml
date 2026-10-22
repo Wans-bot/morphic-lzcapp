@@ -16,7 +16,6 @@ application:
     # 首次启动要先建库并跑迁移，给足时间
     start_period: 900s
     timeout: 10s
-
   # ── 封掉上游自带的 /auth/* 路由（官方审核 #20762 驳回根因） ──
   # 上游 Morphic 是一个带账号体系的应用，Next.js 构建时把 /auth/login、/auth/sign-up、
   # /auth/forgot-password、/auth/update-password、/auth/admin、/auth/confirm 等页面
@@ -63,7 +62,6 @@ application:
           var p = location.pathname;
           if (p === "/auth" || p.indexOf("/auth/") === 0) location.replace("/");
         })();
-
 services:
   postgres:
     image: registry.lazycat.cloud/wans/library/postgres:54b52fdd68074990
@@ -82,7 +80,6 @@ services:
       timeout: 5s
       retries: 30
       start_period: 180s
-
   redis:
     image: registry.lazycat.cloud/wans/library/redis:966d984e0a0c0c25
     # command 必须是字符串（写成数组平台安装会 400，而 project lint 不报）
@@ -97,7 +94,6 @@ services:
       timeout: 5s
       retries: 30
       start_period: 60s
-
   searxng:
     image: registry.lazycat.cloud/wans/searxng/searxng:94abda6f1da25347
     environment:
@@ -119,9 +115,9 @@ services:
       timeout: 5s
       retries: 40
       start_period: 120s
-
   morphic:
-    image: registry.lazycat.cloud/wans/miurla/morphic:aee06ffc1cbf0d02
+    # upstream: ghcr.io/miurla/morphic:1803668a5cbfbcdf8c0c84ac5f8dbefaff3d575c@sha256:f7db53041c9312f18ef23f5dc122757342bf2a9f2a9ba56239360ec10adbf7db
+    image: registry.lazycat.cloud/wans/miurla/morphic:5a0096128e2fcf7a
     # 等三个依赖都真正 healthy 再起：entrypoint 会先跑 bun run migrate，
     # 数据库没起来就会迁移失败退出（上游 compose 里也是这个顺序）
     depends_on:

@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.morphic
-version: 1.8.1
+version: 1.8.2
 name: morphic
 description: AI 答案引擎：先检索全网，再由模型生成带引用的答案
 author: miurla
@@ -7,12 +7,10 @@ license: Apache-2.0
 homepage: https://github.com/miurla/morphic
 min_os_version: 1.6.0
 support_mobile: true
-
 permissions:
   required:
     # 需要联网检索网页、调用用户配置的模型接口
     - net.internet
-
 locales:
   zh-CN:
     name: Morphic AI 搜索
