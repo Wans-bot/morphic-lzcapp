@@ -116,8 +116,8 @@ services:
       retries: 40
       start_period: 120s
   morphic:
-    # upstream: ghcr.io/miurla/morphic:1803668a5cbfbcdf8c0c84ac5f8dbefaff3d575c@sha256:f7db53041c9312f18ef23f5dc122757342bf2a9f2a9ba56239360ec10adbf7db
-    image: registry.lazycat.cloud/wans/miurla/morphic:5a0096128e2fcf7a
+    # upstream: ghcr.io/miurla/morphic:1aec3c0a9e0a8a8ca95793d3757fc74b20d9e372@sha256:f09e80695b27ba991cf1db9c2c5c426eda4951c3b09f71af1d95ebcf196fbf6e
+    image: registry.lazycat.cloud/wans/miurla/morphic:a4b4fb10e1f92a38
     # 等三个依赖都真正 healthy 再起：entrypoint 会先跑 bun run migrate，
     # 数据库没起来就会迁移失败退出（上游 compose 里也是这个顺序）
     depends_on:
