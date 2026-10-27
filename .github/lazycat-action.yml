@@ -10,12 +10,9 @@ project:
 update:
   strategy: publish
   allow_downgrade: false
+  # 版本号一律等于上游 GitHub Release 标签（v1.9.0 -> 1.9.0），不再用 patch 自增。
   version_source:
-    type: image
-    image: app
-    # 上游 ghcr.io/miurla/morphic 只发 40 位 commit sha，没有语义化版本，
-    # 所以按 digest 变化递增 patch 位（文档：Mutable tags and automatic patch bumps）。
-    bump: patch
+    type: git
 
 build:
   run_buildscript: false
@@ -51,3 +48,12 @@ stores:
         - ".github/screenshots/pc-3.png"
   private:
     enabled: false
+
+release:
+  # changelog 口径：同步上游最新版本 + 上游该版本的更新说明
+  use_github_release_notes: true
+  changelog_template: |
+    同步上游最新版本 {{.Version}}。
+    {{if .ReleaseNotes}}
+    {{.ReleaseNotes}}
+    {{end}}
